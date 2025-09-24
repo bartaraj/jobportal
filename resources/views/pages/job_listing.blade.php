@@ -3,6 +3,7 @@
 
 @section('content')
  <div class="slider-area ">
+    {{$jobListings}}
             <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/about.jpg">
                 <div class="container">
                     <div class="row">
@@ -207,28 +208,8 @@
                                 </div>
                                 <!-- Count of Job list End -->
                                 <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
-                                    <div class="job-items">
-                                        <div class="company-img">
-                                            <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
-                                        </div>
-                                        <div class="job-tittle job-tittle2">
-                                            <a href="#">
-                                                <h4>Digital Marketer</h4>
-                                            </a>
-                                            <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
-                                    </div>
-                                </div>
-                                <!-- single-job-content -->
+                            @foreach($jobListings as $joblist) 
+    <!-- single-job-content -->
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
@@ -236,20 +217,26 @@
                                         </div>
                                         <div class="job-tittle job-tittle2">
                                             <a href="#">
-                                                <h4>Digital Marketer</h4>
+                                                <h4>{{$joblist->title}}</h4>
                                             </a>
                                             <ul>
-                                                <li>Creative Agency</li>
-                                                <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                                <li>$3500 - $4000</li>
+                                                <li>{{$joblist->company->name}}</li>
+                                                <li><i class="fas fa-map-marker-alt"></i>{{$joblist->location}}</li>
+                                                <li>{{$joblist->salary_range}}</li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
-                                        <span>7 hours ago</span>
+                                        <a href="{{ route('job_details.show', $joblist->id) }}">{{$joblist->jobType->name}}</a>
+                                        <span>{{ $joblist->created_at->diffForHumans() }}</span>
                                     </div>
                                 </div>
+@endforeach
+
+                               
+
+
+
                                 <!-- single-job-content -->
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
@@ -261,7 +248,7 @@
                                                 <h4>Digital Marketer</h4>
                                             </a>
                                             <ul>
-                                                <li>Creative Agency</li>
+                                                <li>East-Pole Secondary School/College</li>
                                                 <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
                                                 <li>$3500 - $4000</li>
                                             </ul>

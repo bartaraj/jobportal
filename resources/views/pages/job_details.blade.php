@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="hero-cap text-center">
-                            <h2>UI/UX Designer</h2>
+                            <h2>{{$jobListing->title}}</h2>
                         </div>
                     </div>
                 </div>
@@ -30,12 +30,12 @@
                                 </div>
                                 <div class="job-tittle">
                                     <a href="#">
-                                        <h4>Digital Marketer</h4>
+                                        <h4>{{$jobListing->title}}</h4>
                                     </a>
                                     <ul>
-                                        <li>Creative Agency</li>
-                                        <li><i class="fas fa-map-marker-alt"></i>Athens, Greece</li>
-                                        <li>$3500 - $4000</li>
+                                        <li>{{$jobListing->company->name}}</li>
+                                        <li><i class="fas fa-map-marker-alt"></i>{{$jobListing->location}}</li>
+                                        <li>{{$jobListing->salary_range}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                 <div class="small-section-tittle">
                                     <h4>Job Description</h4>
                                 </div>
-                                <p>It is a long established fact that a reader will beff distracted by vbthe creadable content of a page when looking at its layout. The pointf of using Lorem Ipsum is that it has ahf mcore or-lgess normal distribution of letters, as opposed to using, Content here content here making it look like readable.</p>
+                                <p>{{$jobListing->description}}</p>
                             </div>
                             <div class="post-details2  mb-50">
                                  <!-- Small Section Tittle -->
@@ -87,12 +87,12 @@
                                <h4>Job Overview</h4>
                            </div>
                           <ul>
-                              <li>Posted date : <span>12 Aug 2019</span></li>
-                              <li>Location : <span>New York</span></li>
+                              <li>Posted date : <span>{{$jobListing->posted_date}}</span></li>
+                              <li>Location : <span>{{$jobListing->location}}</span></li>
                               <li>Vacancy : <span>02</span></li>
-                              <li>Job nature : <span>Full time</span></li>
-                              <li>Salary :  <span>$7,800 yearly</span></li>
-                              <li>Application date : <span>12 Sep 2020</span></li>
+                              <li>Job nature : <span>{{$jobListing->jobType->name}}</span></li>
+                              <li>Salary Range:  <span>{{$jobListing->salary_range}}</span></li>
+                              <li>Application date : <span>{{$jobListing->application_deadline}}</span></li>
                           </ul>
                          <div class="apply-btn2">
                             <a href="#" class="btn">Apply Now</a>
@@ -103,12 +103,12 @@
                            <div class="small-section-tittle">
                                <h4>Company Information</h4>
                            </div>
-                              <span>Colorlib</span>
-                              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                              <span>{{$jobListing->company->name}}</span>
+                              <p>{{$jobListing->company->description}}</p>
                             <ul>
-                                <li>Name: <span>Colorlib </span></li>
-                                <li>Web : <span> colorlib.com</span></li>
-                                <li>Email: <span>carrier.colorlib@gmail.com</span></li>
+                                <li>Name: <span>{{$jobListing->company->name}} </span></li>
+                                <li>Web : <span> {{$jobListing->company->website}}</span></li>
+                                <li>Email: <span>{{$jobListing->company->email}}</span></li>
                             </ul>
                        </div>
                     </div>
