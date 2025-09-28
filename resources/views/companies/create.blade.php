@@ -1,10 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.admin-dashboard')
 
 @section('content')
 <div class="container">
     <h1>Create Company</h1>
-    <form action="{{ route('companies.store') }}" method="POST">
+<form action="{{ route('companies.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+         <!-- Logo upload -->
+    <div class="mb-3">
+        <label for="logo" class="form-label">Company Logo</label>
+        <input type="file" class="form-control @error('logo') is-invalid @enderror" id="logo" name="logo">
+        @error('logo')
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+    </div>
          <div class="mb-3">
             <label for="company_type" class="form-label">Company Type</label>
             <select name="company_type_id" id="company_type" class="form-control @error('company_type_id') is-invalid @enderror">

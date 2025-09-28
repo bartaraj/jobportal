@@ -1,11 +1,29 @@
-@extends('layouts.app')
+@extends('layouts.admin-dashboard')
 
 @section('content')
 <div class="container">
     <h1>Edit Company</h1>
-    <form action="{{ route('companies.update', $company->id) }}" method="POST">
+    <form action="{{ route('companies.update', $company->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+          <!-- Current logo -->
+        @if($company->logo)
+        <div class="mb-3">
+            <label class="form-label">Current Logo</label>
+            <div>
+                <img src="{{ asset($company->logo) }}" alt="{{ $company->name }}" width="120">
+            </div>
+        </div>
+        @endif
+
+        <!-- Upload new logo -->
+        <div class="mb-3">
+            <label for="logo" class="form-label">Replace Logo</label>
+            <input type="file" class="form-control @error('logo') is-invalid @enderror" id="logo" name="logo">
+            @error('logo')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
         <div class="mb-3">
             <label for="company_type" class="form-label">Company Type</label>
             <select name="company_type_id" id="company_type" 

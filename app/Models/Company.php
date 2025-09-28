@@ -17,7 +17,8 @@ class Company extends Model
         'website',
         'email',
         'description',
-        'company_type_id'
+        'company_type_id',
+        'logo'
     ];
 
     public function jobListings()

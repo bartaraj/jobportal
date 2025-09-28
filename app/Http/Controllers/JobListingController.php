@@ -31,23 +31,32 @@ class JobListingController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-     public function store(Request $request)
+  public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
             'company_id' => 'required|exists:companies,id',
-            'job_type_id' => 'required|exists:job_types,id', // Update validation here
+            'description' => 'required|string',
             'location' => 'nullable|string|max:255',
             'salary_range' => 'nullable|string|max:255',
+            'job_type_id' => 'required|exists:job_types,id',
             'posted_date' => 'required|date',
             'application_deadline' => 'nullable|date',
+            'application_link' => 'nullable|url',
+            'tags' => 'nullable|string', // will split into array later
         ]);
 
-        JobListing::create($validatedData);
+        $jobListing = new JobListing($validated);
 
-        return redirect()->route('job_listings.index')
-            ->with('success', 'Job listing created successfully.');
+        // Convert comma separated tags into array
+        if ($request->filled('tags')) {
+            $jobListing->tags = array_map('trim', explode(',', $request->tags));
+        }
+
+        $jobListing->application_link = $request->application_link;
+        $jobListing->save();
+
+        return redirect()->route('job_listings.index')->with('success', 'Job listing created successfully.');
     }
 
     /**
@@ -72,25 +81,34 @@ class JobListingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, JobListing $jobListing)
+     public function update(Request $request, JobListing $jobListing)
     {
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'required|string',
             'company_id' => 'required|exists:companies,id',
-            'job_type_id' => 'required|exists:job_types,id', // Update validation here
+            'description' => 'required|string',
             'location' => 'nullable|string|max:255',
             'salary_range' => 'nullable|string|max:255',
+            'job_type_id' => 'required|exists:job_types,id',
             'posted_date' => 'required|date',
             'application_deadline' => 'nullable|date',
+            'application_link' => 'nullable|url',
+            'tags' => 'nullable|string',
         ]);
 
-        $jobListing->update($validatedData);
+        $jobListing->fill($validated);
 
-        return redirect()->route('job_listings.index')
-            ->with('success', 'Job listing updated successfully.');
+        if ($request->filled('tags')) {
+            $jobListing->tags = array_map('trim', explode(',', $request->tags));
+        } else {
+            $jobListing->tags = null;
+        }
+
+        $jobListing->application_link = $request->application_link;
+        $jobListing->save();
+
+        return redirect()->route('job_listings.index')->with('success', 'Job listing updated successfully.');
     }
-
     /**
      * Remove the specified resource from storage.
      */

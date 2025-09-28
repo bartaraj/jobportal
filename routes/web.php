@@ -6,7 +6,12 @@ use App\Http\Controllers\JobListingController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\PageController; // Import the controller
 use App\Http\Controllers\CompanyTypeController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 
+Route::get('/dashboard', function () {
+    return view('users.home');
+})->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
     return view('homepage');
@@ -31,6 +36,7 @@ Route::get('/contact', function () {
 
 
 
+Route::middleware(['auth','role:Admin'])->group(function () {
 
 Route::get('/companies', [CompanyController::class, 'index'])->name('companies.index');
 
@@ -121,3 +127,10 @@ Route::put('/company-types/{companyType}', [CompanyTypeController::class, 'updat
 
 // Delete a company type
 Route::delete('/company-types/{companyType}', [CompanyTypeController::class, 'destroy'])->name('company-types.destroy');
+// Route::get('/jobs/search', [PageController::class, 'search'])->name('jobs.search');
+
+Route::resource('roles', RoleController::class);
+Route::resource('permissions', PermissionController::class);
+});
+
+require __DIR__.'/auth.php';

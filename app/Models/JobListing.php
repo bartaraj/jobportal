@@ -20,8 +20,12 @@ class JobListing extends Model
         'job_type_id',
         'posted_date',
         'application_deadline',
+        'application_link',
+        'tags',
     ];
-
+protected $casts = [
+        'tags' => 'array',
+    ];
 
     public function company()
     {

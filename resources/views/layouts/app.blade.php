@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-         <title>Job board HTML-5 Template </title>
+         <title>MalaiJagir</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="site.webmanifest">
-		<link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/favicon.icon')}}">
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('storage/logos/malaijagir_logo.png') }}">
 
 		<!-- CSS here -->
             <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
@@ -31,7 +31,7 @@
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
                 <div class="preloader-img pere-text">
-                    <img src="assets/img/logo/logo.png" alt="">
+                    <img src="{{ asset('storage/logos/malaijagir_logo.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -45,9 +45,9 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-2">
                             <!-- Logo -->
-                            <div class="logo">
-                                <a href="{{route('homepage')}}"><img src="assets/img/logo/logo.png" alt=""></a>
-                            </div>  
+                         <div class="logo">
+    <a href="{{route('homepage')}}"><img src="{{ asset('storage/logos/malaijagir_logo_nav.png') }}" alt="MalaiJagir Logo" style="max-height: 100px; width: auto"></a>
+</div>
                         </div>
                         <div class="col-lg-9 col-md-9">
                             <div class="menu-wrapper">
@@ -72,8 +72,8 @@
                                 </div>          
                                 <!-- Header-btn -->
                                 <div class="header-btn d-none f-right d-lg-block">
-                                    <a href="#" class="btn head-btn1">Register</a>
-                                    <a href="#" class="btn head-btn2">Login</a>
+                                    <a href="{{route('register')}}" class="btn head-btn1">Register</a>
+                                    <a href="{{route('login')}}" class="btn head-btn2">Login</a>
                                 </div>
                             </div>
                         </div>
@@ -126,11 +126,10 @@
                                 <h4>Contact Info</h4>
                                 <ul>
                                     <li>
-                                    <p>Address :Your address goes
-                                        here, your demo address.</p>
+                                    <p>Address : Kageshowri Manohara-06</p>
                                     </li>
-                                    <li><a href="#">Phone : +8880 44338899</a></li>
-                                    <li><a href="#">Email : info@colorlib.com</a></li>
+                                    <li><a href="#">Phone : +9779803297940</a></li>
+                                    <li><a href="#">Email : info@malaijagir.com</a></li>
                                 </ul>
                             </div>
 
@@ -273,3 +272,5 @@
         
     </body>
 </html>
+
+
