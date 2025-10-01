@@ -94,4 +94,13 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+<script>
+    // 3. Initialize CKEditor on the textarea with ID 'description'
+    ClassicEditor
+        .create( document.querySelector( '#description' ) )
+        .catch( error => {
+            console.error( 'There was an error initializing the CKEditor:', error );
+        } );
+</script>
 @endsection

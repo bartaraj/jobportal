@@ -13,9 +13,10 @@ Route::get('/dashboard', function () {
     return view('users.home');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/', function () {
-    return view('homepage');
-})->name('homepage');
+// Route::get('/', function () {
+//     return view('homepage');
+// })->name('homepage');
+Route::get('/', [PageController::class, 'homepage'])->name('homepage');
 
 
 Route::get('/job_listing', [PageController::class, 'jobListings'])->name('job_listing');

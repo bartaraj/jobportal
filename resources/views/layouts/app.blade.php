@@ -181,7 +181,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <!-- logo -->
                         <div class="footer-logo mb-20">
-                        <a href="{{route('homepage')}}"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                        <a href="{{route('homepage')}}"><img src="{{ asset('storage/logos/malaijagir_logo_nav.png') }}" alt=""></a>
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
@@ -220,7 +220,7 @@
                          </div>
                          <div class="col-xl-2 col-lg-2">
                              <div class="footer-social f-right">
-                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                 <a href="https://www.facebook.com/profile.php?id=100080261996413"><i class="fab fa-facebook-f"></i></a>
                                  <a href="#"><i class="fab fa-twitter"></i></a>
                                  <a href="#"><i class="fas fa-globe"></i></a>
                                  <a href="#"><i class="fab fa-behance"></i></a>

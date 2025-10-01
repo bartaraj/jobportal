@@ -107,5 +107,10 @@ if ($request->filled('keyword')) {
 
 //     return view('pages.job_listing', compact('jobListings'));
 // }
-
+public function homepage(){
+$jobs = JobListing::with('company', 'jobType')
+                  ->take(5) // Specify the number of records you want
+                  ->get();   // Execute the query and retrieve the results
+return view('homepage',compact('jobs'));
+}
 }
